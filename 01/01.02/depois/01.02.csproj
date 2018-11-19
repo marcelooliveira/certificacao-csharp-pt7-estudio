@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img1.png" />
     <None Remove="img2.png" />
   </ItemGroup>
 
