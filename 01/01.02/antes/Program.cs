@@ -4,26 +4,29 @@ namespace _01_02
 {
     class Program
     {
-        static void CampainhaTocou1()
-        {
-            Console.WriteLine("A campainha tocou.");
-        }
-
-        static void CampainhaTocou2()
-        {
-            Console.WriteLine("A campainha tocou.");
-        }
-
         static void Main(string[] args)
         {
             Campainha campainha = new Campainha();
-            //campainha.Tocar();
-            //campainha.OnCampainhaTocou = new Action(() => { });
             campainha.OnCampainhaTocou += CampainhaTocou1;
             campainha.OnCampainhaTocou += CampainhaTocou2;
-
+            Console.WriteLine("A campainha será tocada.");
             campainha.Tocar();
+
+            campainha.OnCampainhaTocou -= CampainhaTocou1;
+            Console.WriteLine("A campainha será tocada.");
+            campainha.Tocar();
+
             Console.ReadKey();
+
+        }
+
+        static void CampainhaTocou1()
+        {
+            Console.WriteLine("A campainha tocou.(1)");
+        }
+        static void CampainhaTocou2()
+        {
+            Console.WriteLine("A campainha tocou.(2)");
         }
     }
 
@@ -33,13 +36,13 @@ namespace _01_02
 
         public void Tocar()
         {
-            //if (OnCampainhaTocou != null)
-            //{
-            //    OnCampainhaTocou();
-            //}
+            if (OnCampainhaTocou != null)
+            {
+                OnCampainhaTocou();
+            }
 
-            OnCampainhaTocou?.Invoke();
         }
     }
-
 }
+
+
