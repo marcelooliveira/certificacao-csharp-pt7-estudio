@@ -45,4 +45,6 @@ namespace _01_02
     }
 }
 
+/// < image url="$(ProjectDir)/img2.png"/>
+
 
