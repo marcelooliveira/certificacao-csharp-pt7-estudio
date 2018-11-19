@@ -10,41 +10,51 @@ namespace _01_02
             campainha.OnCampainhaTocou += CampainhaTocou1;
             campainha.OnCampainhaTocou += CampainhaTocou2;
             Console.WriteLine("A campainha será tocada.");
-            campainha.Tocar();
+            campainha.Tocar("101");
 
             campainha.OnCampainhaTocou -= CampainhaTocou1;
             Console.WriteLine("A campainha será tocada.");
-            campainha.Tocar();
+            campainha.Tocar("202");
 
             Console.ReadKey();
 
         }
 
-        static void CampainhaTocou1(object sender, EventArgs args)
+        static void CampainhaTocou1(object sender, CampainhaEventArgs args)
         {
-            Console.WriteLine("A campainha tocou.(1)");
+            Console.WriteLine("A campainha tocou no apartamento " + args.Apartamento + " .(1)");
         }
-        static void CampainhaTocou2(object sender, EventArgs args)
+        static void CampainhaTocou2(object sender, CampainhaEventArgs args)
         {
-            Console.WriteLine("A campainha tocou.(2)");
+            Console.WriteLine("A campainha tocou no apartamento " + args.Apartamento + " .(2)");
         }
     }
 
     class Campainha
     {
-        public event EventHandler OnCampainhaTocou;
+        public event EventHandler<CampainhaEventArgs> OnCampainhaTocou;
 
-        public void Tocar()
+        public void Tocar(string apartamento)
         {
             if (OnCampainhaTocou != null)
             {
-                OnCampainhaTocou(this, new EventArgs());
+                OnCampainhaTocou(this, new CampainhaEventArgs(apartamento));
             }
 
         }
     }
+
+    class CampainhaEventArgs : EventArgs
+    {
+        public CampainhaEventArgs(string apartamento)
+        {
+            Apartamento = apartamento;
+        }
+
+        public string Apartamento { get; }
+    }
 }
 
-/// < image url="$(ProjectDir)/img1.png"/>
+/// <image url="$(ProjectDir)/img2.png"/>
 
 
