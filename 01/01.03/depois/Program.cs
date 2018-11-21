@@ -6,7 +6,7 @@ namespace _01_03
     {
         static void Main(string[] args)
         {
-
+            Console.ReadKey();
         }
     }
 }
