@@ -69,9 +69,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "antes", "antes", "{97FF5836-0C8B-4FAF-84BE-D87827121D14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "depois", "depois", "{223FF7E0-B729-4DA2-885E-4320BDBB9DAF}"
-	ProjectSection(SolutionItems) = preProject
-		ex35.md = ex35.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "antes", "antes", "{869B99D7-A9A5-414D-ACEC-53E5AECFDF46}"
 EndProject
