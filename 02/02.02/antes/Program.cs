@@ -9,56 +9,31 @@ namespace _02_02
     {
         static void Main(string[] args)
         {
-            List<Diretor> diretores = GetDiretores();
-            List<Filme> filmes = GetFilmes();
+            var filmes = GetFilmes();
 
-            //Console.WriteLine($"{"Título",-40}{"Diretor",-20}{"Ano",4}");
-            //Console.WriteLine(new string('=', 64));
-            //foreach (var filme in filmes)
-            //{
-            //    Console.WriteLine($"{filme.Titulo, -40}{filme.Diretor.Nome, -20}{filme.Ano}");
-            //}
-
-            Imprimir(filmes);
-
-            Filme novoFilme = new Filme
+            var novoFilme = new Filme
             {
-                DiretorId = 3,
-                Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
                 Titulo = "A Fantástica Fábrica de Chocolate",
                 Ano = 2005,
-                Minutos = 115
+                Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
+                DiretorId = 3
             };
 
             filmes.Add(novoFilme);
 
-
-            IEnumerable<Filme> filmesSelecionados = filmes;
-            Imprimir(filmesSelecionados);
+            Imprimir(filmes);
 
             Console.ReadKey();
         }
 
-        private static void Imprimir(IEnumerable<Filme> filmes)
+        private static void Imprimir(List<Filme> filmes)
         {
-            Console.WriteLine($"{"Título",-40}{"Diretor",-20}{"Ano",4}");
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",4}");
             Console.WriteLine(new string('=', 64));
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"{filme.Titulo,-40}{filme.Diretor.Nome,-20}{filme.Ano}");
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
             }
-            Console.WriteLine();
-        }
-
-        private static void Imprimir(IEnumerable<FilmeResumido> filmes)
-        {
-            Console.WriteLine($"{"Título",-40}{"Diretor",-20}");
-            Console.WriteLine(new string('=', 60));
-            foreach (var filme in filmes)
-            {
-                Console.WriteLine($"{filme.Titulo,-40}{filme.NomeDiretor,-20}");
-            }
-            Console.WriteLine();
         }
 
         private static List<Diretor> GetDiretores()
@@ -156,11 +131,5 @@ namespace _02_02
         public string Titulo { get; set; }
         public int Ano { get; set; }
         public int Minutos { get; set; }
-    }
-
-    class FilmeResumido
-    {
-        public string NomeDiretor { get; set; }
-        public string Titulo { get; set; }
     }
 }

@@ -18,11 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.01 consultar", "02.01 consultar", "{A41FF17C-4E04-4838-B7F5-FB8452669B57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.02 sintaxe de consulta", "02.02 sintaxe de consulta", "{DBB4E0D7-9DCE-4D70-93EF-BC7D645C9F9B}"
-	ProjectSection(SolutionItems) = preProject
-		ex09.md = ex09.md
-		ex10.md = ex10.md
-		ex26.md = ex26.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.04 tipos anonimos", "02.04 tipos anonimos", "{B9CE7BE5-6394-4096-AE55-4824502C92E1}"
 EndProject
