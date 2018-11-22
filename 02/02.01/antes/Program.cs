@@ -108,10 +108,4 @@ namespace _02_01
         public int Ano { get; set; }
         public int Minutos { get; set; }
     }
-
-    class FilmeResumido
-    {
-        public string NomeDiretor { get; set; }
-        public string Titulo { get; set; }
-    }
 }
