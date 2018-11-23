@@ -31,6 +31,7 @@ namespace _02_02
 
             var consulta =
                 from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
                 select f;
 
             Imprimir(consulta);
@@ -46,6 +47,7 @@ namespace _02_02
             {
                 Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
             }
+            Console.WriteLine();
         }
 
         private static List<Diretor> GetDiretores()
