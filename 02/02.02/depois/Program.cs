@@ -36,6 +36,21 @@ namespace _02_02
 
             Imprimir(consulta);
 
+            //SELECT f.Nome AS Titulo, f.Diretor
+            //FROM filmes AS f  //ALIAS
+            //WHERE f.Diretor = "Tim Burton"
+
+            var consulta2 =
+                from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
+                select new FilmeResumido
+                {
+                    Titulo = f.Titulo,
+                    Diretor = f.Diretor.Nome
+                };
+            Imprimir(consulta2);
+
+
             Console.ReadKey();
         }
 
@@ -46,6 +61,17 @@ namespace _02_02
             foreach (var filme in filmes)
             {
                 Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
+            }
+            Console.WriteLine();
+        }
+
+        private static void Imprimir(IEnumerable<FilmeResumido> filmes)
+        {
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20}");
+            Console.WriteLine(new string('=', 64));
+            foreach (var filme in filmes)
+            {
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor,-20}");
             }
             Console.WriteLine();
         }
@@ -145,5 +171,11 @@ namespace _02_02
         public string Titulo { get; set; }
         public int Ano { get; set; }
         public int Minutos { get; set; }
+    }
+
+    class FilmeResumido
+    {
+        public string Titulo { get; set; }
+        public string Diretor { get; set; }
     }
 }
