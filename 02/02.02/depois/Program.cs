@@ -51,6 +51,24 @@ namespace _02_02
             Imprimir(consulta2);
 
 
+            var consulta3 =
+                from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
+                select new //OBJETO ANÔNIMO
+                {
+                    f.Titulo,
+                    Diretor = f.Diretor.Nome
+                };
+
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20}");
+            Console.WriteLine(new string('=', 64));
+            foreach (var filme in consulta3)
+            {
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor,-20}");
+            }
+            Console.WriteLine();
+
+
             Console.ReadKey();
         }
 
