@@ -23,10 +23,22 @@ namespace _02_02
 
             Imprimir(filmes);
 
+            //LINQ = CONSULTA INTEGRADA À LINGUAGEM
+
+            //SELECT f.*
+            //FROM filmes AS f  //ALIAS
+            //WHERE f.Diretor = "Tim Burton"
+
+            var consulta =
+                from f in filmes
+                select f;
+
+            Imprimir(consulta);
+
             Console.ReadKey();
         }
 
-        private static void Imprimir(List<Filme> filmes)
+        private static void Imprimir(IEnumerable<Filme> filmes)
         {
             Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",4}");
             Console.WriteLine(new string('=', 64));
