@@ -50,8 +50,6 @@ namespace _02_03
                     Diretor = f.Diretor.Nome
                 };
 
-            Imprimir(consulta2);
-
 
             Console.WriteLine("\nRelacionando duas sequências");
             Console.WriteLine("============================");
