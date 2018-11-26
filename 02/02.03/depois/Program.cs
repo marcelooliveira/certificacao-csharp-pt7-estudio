@@ -3,68 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace _02_03
+namespace _02_02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            List<Diretor> diretores = GetDiretores();
-            List<Filme> filmes = GetFilmes();
-            IEnumerable<Filme> queryMetodo =
-                filmes.Where(filme => filme.Diretor.Nome == "James Cameron");
+            var filmes = GetFilmes();
 
-            var resumoDiretorPorMetodo =
-            filmes
-            .Join(diretores,
-                filme => filme.DiretorId,
-                diretor => diretor.Id,
-                (filme, diretor) =>
-                new
-                {
-                    filme,
-                    diretor
-                }
-            )
-            .GroupBy(temp => temp.diretor)
-            .Select(resumoDiretorFilme =>
-            new
+            var novoFilme = new Filme
             {
-                Diretor = resumoDiretorFilme.Key,
-                TotalMinutos = resumoDiretorFilme.Sum(x => x.filme.Minutos)
-            });
-            Console.WriteLine($"{"Nome Diretor",-30}{"Total Minutos",20}");
-            Console.WriteLine(new string('=', 50));
-            foreach (var item in resumoDiretorPorMetodo)
-            {
-                Console.WriteLine($"{item.Diretor,-30}{item.TotalMinutos,20}");
-            }
-            Console.WriteLine();
+                Titulo = "A Fantástica Fábrica de Chocolate",
+                Ano = 2005,
+                Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
+                DiretorId = 3,
+                Minutos = 115
+            };
 
+            filmes.Add(novoFilme);
+
+            Imprimir(filmes);
 
             Console.ReadKey();
         }
 
-        private static void Imprimir(IEnumerable<Filme> filmes)
+        private static void Imprimir(List<Filme> filmes)
         {
-            Console.WriteLine($"{"Título",-40}{"Diretor",-20}{"Ano",4}");
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",4}");
             Console.WriteLine(new string('=', 64));
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"{filme.Titulo,-40}{filme.Diretor.Nome,-20}{filme.Ano}");
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
             }
-            Console.WriteLine();
-        }
-
-        private static void Imprimir(IEnumerable<FilmeResumido> filmes)
-        {
-            Console.WriteLine($"{"Título",-40}{"Diretor",-20}");
-            Console.WriteLine(new string('=', 60));
-            foreach (var filme in filmes)
-            {
-                Console.WriteLine($"{filme.Titulo,-40}{filme.NomeDiretor,-20}");
-            }
-            Console.WriteLine();
         }
 
         private static List<Diretor> GetDiretores()
@@ -162,11 +132,5 @@ namespace _02_03
         public string Titulo { get; set; }
         public int Ano { get; set; }
         public int Minutos { get; set; }
-    }
-
-    class FilmeResumido
-    {
-        public string NomeDiretor { get; set; }
-        public string Titulo { get; set; }
     }
 }

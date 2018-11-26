@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace _02_03
+namespace _02_02
 {
     class Program
     {
         static void Main(string[] args)
         {
-            List<Diretor> diretores = GetDiretores();
-            List<Filme> filmes = GetFilmes();
+            var filmes = GetFilmes();
+
+            var novoFilme = new Filme
+            {
+                Titulo = "A Fantástica Fábrica de Chocolate",
+                Ano = 2005,
+                Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
+                DiretorId = 3,
+                Minutos = 115
+            };
+
+            filmes.Add(novoFilme);
+
+            Imprimir(filmes);
 
             Console.ReadKey();
         }
 
-        private static void Imprimir(IEnumerable<Filme> filmes)
+        private static void Imprimir(List<Filme> filmes)
         {
-            Console.WriteLine($"{"Título",-40}{"Diretor",-20}{"Ano",4}");
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",4}");
             Console.WriteLine(new string('=', 64));
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"{filme.Titulo,-40}{filme.Diretor.Nome,-20}{filme.Ano}");
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
             }
-            Console.WriteLine();
         }
 
         private static List<Diretor> GetDiretores()
