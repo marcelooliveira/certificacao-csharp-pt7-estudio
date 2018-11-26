@@ -17,7 +17,8 @@ namespace _02_02
                 Titulo = "A Fantástica Fábrica de Chocolate",
                 Ano = 2005,
                 Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
-                DiretorId = 3
+                DiretorId = 3,
+                Minutos = 115
             };
 
             filmes.Add(novoFilme);
@@ -104,17 +105,34 @@ namespace _02_02
                 from f in filmes
                 join d in diretores
                     on f.DiretorId equals d.Id
-                group d by d
+                group f by d
                     into agrupado
                 select new //OBJETO ANÔNIMO
                 {
                     Diretor = agrupado.Key,
-                    Quantidade = agrupado.Count()
+                    Quantidade = agrupado.Count(),
+                    Total = agrupado.Sum(f => f.Minutos),
+                    Min = agrupado.Min(f => f.Minutos),
+                    Max = agrupado.Max(f => f.Minutos),
+                    Media = (int)agrupado.Average(f => f.Minutos)
                 };
 
+            Console.WriteLine(
+                $"{"Nome",-30}" +
+                $"\t{"Qtd"}" +
+                $"\t{"Total"}" +
+                $"\t{"Min"}" +
+                $"\t{"Max"}" +
+                $"\t{"Media"}");
             foreach (var item in consulta5)
             {
-                Console.WriteLine($"{item.Diretor.Nome}\t{item.Quantidade}");
+                Console.WriteLine(
+                    $"{item.Diretor.Nome,-30}" +
+                    $"\t{item.Quantidade}" +
+                    $"\t{item.Total}" +
+                    $"\t{item.Min}" +
+                    $"\t{item.Max}" +
+                    $"\t{item.Media}");
             }
 
             Console.ReadKey();
