@@ -133,6 +133,11 @@ namespace _02_04
         public string Titulo { get; set; }
         public int Ano { get; set; }
         public int Minutos { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Diretor.Nome} - {Titulo}";
+        }
     }
 
     class FilmeResumido
