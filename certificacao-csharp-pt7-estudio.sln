@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.01 consultar", "02.01 co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.02 sintaxe de consulta", "02.02 sintaxe de consulta", "{DBB4E0D7-9DCE-4D70-93EF-BC7D645C9F9B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.04 tipos anonimos", "02.04 tipos anonimos", "{B9CE7BE5-6394-4096-AE55-4824502C92E1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.04 forcar execucao", "02.04 forcar execucao", "{B9CE7BE5-6394-4096-AE55-4824502C92E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.05 forcar execucao", "02.05 forcar execucao", "{CB3DFBF1-56B0-41F6-B744-FFED7E0EFE4E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.05 linq to xml", "02.05 linq to xml", "{CB3DFBF1-56B0-41F6-B744-FFED7E0EFE4E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.06 linq to xml", "02.06 linq to xml", "{41D1D2C5-28CD-4FD3-9167-9294D956EEED}"
 	ProjectSection(SolutionItems) = preProject
