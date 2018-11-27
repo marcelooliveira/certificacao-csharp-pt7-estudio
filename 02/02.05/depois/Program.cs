@@ -24,6 +24,21 @@ namespace _02_05
                 "</Filme>" +
             "</Filmes>";
 
+            //XmlDocument documento = new XmlDocument();
+            //documento.LoadXml(xml);
+
+            XDocument documento = XDocument.Parse(xml);
+
+            IEnumerable<XElement> consulta =
+                from f in documento.Descendants("Filme")
+                select f;
+
+            foreach (var item in consulta)
+            {
+                Console.WriteLine(item.Element("Diretor").FirstNode);
+                Console.WriteLine(item.Element("Titulo").FirstNode);
+            }
+
             Console.ReadKey();
         }
     }
