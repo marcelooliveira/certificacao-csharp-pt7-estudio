@@ -9,7 +9,7 @@ namespace _02_05
     {
         static void Main(string[] args)
         {
-            string xmlText =
+            string xml =
             "<Filmes>" +
                 "<Filme>" +
                     "<Diretor>Quentin Tarantino</Diretor>" +
