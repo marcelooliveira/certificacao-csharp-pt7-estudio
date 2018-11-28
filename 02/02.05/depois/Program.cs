@@ -64,6 +64,32 @@ namespace _02_05
                 Console.WriteLine((string)item.Element("Titulo"));
             }
 
+            Console.WriteLine();
+
+            XElement pulpFiction
+                = consulta.Where(filme => 
+                    (string)filme.Element("Titulo") == "Pulp Fiction")
+                    .SingleOrDefault();
+
+            if (pulpFiction != null)
+            {
+                pulpFiction.Add(new XElement("Genero", "Drama"));
+            }
+
+            XElement avatar
+                = consulta.Where(filme =>
+                    (string)filme.Element("Titulo") == "Avatar")
+                  .Single();
+
+            avatar.Add(new XElement("Genero", "Ficção Científica"));
+
+            foreach (var item in consulta)
+            {
+                Console.WriteLine((string)item.Element("Diretor"));
+                Console.WriteLine((string)item.Element("Titulo"));
+                Console.WriteLine((string)item.Element("Genero"));
+            }
+
             Console.ReadKey();
         }
     }
